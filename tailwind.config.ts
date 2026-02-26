@@ -38,7 +38,10 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
-      fontFamily: { sans: ["Inter", "sans-serif"] },
+      fontFamily: {
+        sans: ["Funnel Display", "sans-serif"],
+        heading: ["Montserrat", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

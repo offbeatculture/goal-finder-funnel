@@ -66,7 +66,7 @@ const ThankYou = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-4xl font-extrabold text-foreground mb-6 text-center"
+          className="text-4xl font-heading font-extrabold text-foreground mb-6 text-center"
         >
           You're In!
         </motion.h1>

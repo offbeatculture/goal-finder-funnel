@@ -19,7 +19,7 @@ const IntroScreen = ({ onStart }: Props) => {
           </p>
         </div>
 
-        <h1 className="text-4xl font-extrabold text-foreground leading-tight text-center">
+        <h1 className="text-4xl font-heading font-extrabold text-foreground leading-tight text-center">
           Why do your goals keep falling apart?
         </h1>
 
@@ -27,7 +27,7 @@ const IntroScreen = ({ onStart }: Props) => {
           Take this 90-second quiz to find out exactly what's stopping you — and what to do about it.
         </p>
 
-        <button onClick={onStart} className="cta-button-large mt-6">
+        <button onClick={onStart} className="cta-button-large mt-6 font-heading">
           Find Out Now
         </button>
 

@@ -17,7 +17,7 @@ const QuestionScreen = ({ question, onAnswer }: Props) => {
 
   return (
     <div className="flex-1 flex flex-col justify-center px-6 py-8">
-      <h2 className="text-[28px] font-bold text-foreground leading-tight mb-10">
+      <h2 className="text-[28px] font-heading font-bold text-foreground leading-tight mb-10">
         {question.text}
       </h2>
       <div className="space-y-3">

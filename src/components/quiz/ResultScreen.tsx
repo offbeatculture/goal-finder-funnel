@@ -35,7 +35,7 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
         YOUR GOAL ACHIEVEMENT PERSONALITY
       </p>
 
-      <h1 className="text-3xl font-extrabold text-foreground mb-6">
+      <h1 className="text-3xl font-heading font-extrabold text-foreground mb-6">
         {archetype.name}
       </h1>
 

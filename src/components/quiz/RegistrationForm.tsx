@@ -90,7 +90,7 @@ const RegistrationForm = ({ onSuccess }: Props) => {
       animate={{ opacity: 1, y: 0 }}
       className="flex-1 flex flex-col px-6 py-8 overflow-y-auto"
     >
-      <h1 className="text-2xl font-bold text-foreground mb-1">Secure Your Spot</h1>
+      <h1 className="text-2xl font-heading font-bold text-foreground mb-1">Secure Your Spot</h1>
       <p className="text-base text-primary font-medium mb-8">
         Goal Hacking Workshop &nbsp;|&nbsp; ₹99 &nbsp;|&nbsp; March 1
       </p>
