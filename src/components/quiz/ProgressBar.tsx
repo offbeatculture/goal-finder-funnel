@@ -1,0 +1,30 @@
+import { motion } from "framer-motion";
+
+interface Props {
+  current: number;
+  total: number;
+}
+
+const ProgressBar = ({ current, total }: Props) => {
+  const pct = (current / total) * 100;
+
+  return (
+    <div className="w-full">
+      <div className="w-full h-1 bg-secondary">
+        <motion.div
+          className="h-full bg-primary"
+          initial={{ width: 0 }}
+          animate={{ width: `${pct}%` }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        />
+      </div>
+      <div className="flex justify-end px-4 pt-1.5">
+        <span className="text-xs text-muted-foreground">
+          {current} of {total}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+export default ProgressBar;
