@@ -29,8 +29,8 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
-      className="flex-1 flex flex-col px-6 py-8 overflow-y-auto"
-    >
+      className="flex-1 flex flex-col px-6 py-8 overflow-y-auto">
+
       <p className="text-xs font-bold tracking-[0.2em] text-primary uppercase mb-3">
         YOUR GOAL ACHIEVEMENT PERSONALITY
       </p>
@@ -46,8 +46,8 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
             className="h-full bg-primary rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${score}%` }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          />
+            transition={{ duration: 1.2, ease: "easeOut" }} />
+
         </div>
         <div className="flex justify-between mt-1.5">
           <span className="text-xs text-muted-foreground">LOW</span>
@@ -55,8 +55,8 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="text-xs font-bold text-primary"
-          >
+            className="text-xs font-bold text-primary">
+
             Score: {animatedScore} / 100
           </motion.span>
           <span className="text-xs text-muted-foreground">HIGH</span>
@@ -85,14 +85,14 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
       </div>
 
       <button onClick={onCTA} className="cta-button-large">
-        See Your Solution — ₹99
+        See Your Solution  
       </button>
 
       <p className="text-xs text-muted-foreground text-center mt-3">
         Goal Hacking Workshop &nbsp;|&nbsp; Sunday March 1 &nbsp;|&nbsp; 11 AM
       </p>
-    </motion.div>
-  );
+    </motion.div>);
+
 };
 
 export default ResultScreen;
