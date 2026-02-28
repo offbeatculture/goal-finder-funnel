@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Archetype } from "@/lib/quizData";
 
+const SHEET_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?gid=43987342&single=true&output=csv";
+
 interface Props {
   score: number;
   archetype: Archetype;
@@ -10,6 +13,22 @@ interface Props {
 
 const ResultScreen = ({ score, archetype, onCTA }: Props) => {
   const [animatedScore, setAnimatedScore] = useState(0);
+  const [workshopDate, setWorkshopDate] = useState("");
+  const [workshopTime, setWorkshopTime] = useState("");
+
+  useEffect(() => {
+    fetch(SHEET_CSV_URL)
+      .then((res) => res.text())
+      .then((csv) => {
+        const rows = csv.trim().split("\n");
+        if (rows.length >= 2) {
+          const cols = rows[1].split(",");
+          if (cols[0]) setWorkshopDate(cols[0].trim());
+          if (cols[1]) setWorkshopTime(cols[1].trim());
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     let current = 0;
@@ -89,7 +108,7 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
       </button>
 
       <p className="text-xs text-muted-foreground text-center mt-3">
-        Goal Hacking Workshop &nbsp;|&nbsp; Sunday March 1 &nbsp;|&nbsp; 11 AM
+        Goal Hacking Workshop {workshopDate && <>&nbsp;|&nbsp; {workshopDate}</>} {workshopTime && <>&nbsp;|&nbsp; {workshopTime}</>}
       </p>
     </motion.div>);
 
