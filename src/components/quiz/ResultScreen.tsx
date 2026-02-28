@@ -108,7 +108,7 @@ const ResultScreen = ({ score, archetype, onCTA }: Props) => {
       </button>
 
       <p className="text-xs text-muted-foreground text-center mt-3">
-        Goal Hacking Workshop {workshopDate && <>&nbsp;|&nbsp; {workshopDate}</>} {workshopTime && <>&nbsp;|&nbsp; {workshopTime}</>}
+        Goal Hacking Workshop
       </p>
     </motion.div>);
 
