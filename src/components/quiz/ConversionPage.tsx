@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Target, BarChart3, RefreshCw, Copy, Grid3X3, Sparkles } from "lucide-react";
+import { Target, BarChart3, RefreshCw, Copy, Grid3X3, Sparkles, CalendarDays, Clock } from "lucide-react";
 import ankitPhoto from "@/assets/ankit-neerav.webp";
 import creativesImg from "@/assets/creatives.png";
+
+const SHEET_CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?gid=43987342&single=true&output=csv";
 
 interface Props {
   onCTA: () => void;
@@ -45,8 +49,41 @@ const faqs = [
 ];
 
 const ConversionPage = ({ onCTA }: Props) => {
+  const [workshopDate, setWorkshopDate] = useState("Sunday March 1");
+  const [workshopTime, setWorkshopTime] = useState("11 AM");
+
+  useEffect(() => {
+    fetch(SHEET_CSV_URL)
+      .then((res) => res.text())
+      .then((csv) => {
+        const rows = csv.trim().split("\n");
+        if (rows.length >= 2) {
+          const cols = rows[1].split(",");
+          if (cols[0]) setWorkshopDate(cols[0].trim());
+          if (cols[1]) setWorkshopTime(cols[1].trim());
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="flex-1 overflow-y-auto px-6 py-10 space-y-14">
+      {/* DATE & TIME BANNER */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="bg-primary/10 border border-primary/30 rounded-2xl p-5 flex items-center justify-center gap-6"
+      >
+        <div className="flex items-center gap-2">
+          <CalendarDays className="w-5 h-5 text-primary" />
+          <span className="font-heading font-bold text-foreground text-base">{workshopDate}</span>
+        </div>
+        <div className="w-px h-6 bg-primary/30" />
+        <div className="flex items-center gap-2">
+          <Clock className="w-5 h-5 text-primary" />
+          <span className="font-heading font-bold text-foreground text-base">{workshopTime}</span>
+        </div>
+      </motion.div>
       {/* HERO */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
