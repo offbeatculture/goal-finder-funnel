@@ -29,23 +29,22 @@ const ReinforcementFour = ({ onContinue }: Props) => {
       <div className="text-center space-y-8 z-10 max-w-sm w-full">
         {/* Silhouette */}
         <motion.div
-          className="mx-auto w-24 h-32 rounded-t-full border-2 relative flex items-center justify-center overflow-hidden"
+          className="mx-auto w-48 h-64 rounded-t-full border-2 relative flex items-center justify-center overflow-hidden"
           style={{
             borderColor: step >= 3 ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.3)",
-            boxShadow: step >= 3 ? "0 0 20px hsl(var(--primary) / 0.3)" : "none",
+            boxShadow: step >= 3 ? "0 0 30px hsl(var(--primary) / 0.4)" : "none",
           }}
         >
-          <span className="text-5xl opacity-40">🧍</span>
-          {/* Words floating through */}
+          <span className="text-7xl opacity-40">🧍</span>
           {step >= 1 && step < 2 && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
               {negativeWords.map((w, i) => (
                 <motion.span
                   key={w}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 0.5, y: -20 }}
                   transition={{ duration: 1.5, delay: i * 0.3 }}
-                  className="text-[10px] font-bold text-muted-foreground"
+                  className="text-sm font-bold text-muted-foreground"
                 >
                   {w}
                 </motion.span>
@@ -53,14 +52,14 @@ const ReinforcementFour = ({ onContinue }: Props) => {
             </div>
           )}
           {step >= 3 && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
               {positiveWords.map((w, i) => (
                 <motion.span
                   key={w}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.2 }}
-                  className="text-[10px] font-bold text-primary"
+                  className="text-sm font-bold text-primary"
                 >
                   {w}
                 </motion.span>
