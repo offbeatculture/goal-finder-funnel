@@ -62,13 +62,13 @@ const ReinforcementTwo = ({ onContinue }: Props) => {
         )}
 
         {step >= 4 && (
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-primary text-primary-foreground rounded-2xl py-3 px-5"
+            className="text-xl font-bold text-primary"
           >
-            <p className="font-bold text-lg">That gap is killing your goals.</p>
-          </motion.div>
+            That gap is killing your goals.
+          </motion.p>
         )}
 
         {step >= 5 && (
