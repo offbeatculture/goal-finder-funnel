@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Accordion,
   AccordionContent,
@@ -64,6 +65,16 @@ const ConversionPage = ({ onCTA }: Props) => {
         }
       })
       .catch(() => {});
+  }, []);
+
+  const handleCTA = useCallback(async () => {
+    // Fire webhook in the background
+    supabase.functions.invoke("quiz-webhook", {
+      body: { event: "cta_clicked", timestamp: new Date().toISOString() },
+    }).catch(() => {});
+
+    // Redirect in the same tab
+    window.location.href = "https://rzp.io/rzp/ghm-fb2-quiz";
   }, []);
 
   return (
@@ -199,7 +210,7 @@ const ConversionPage = ({ onCTA }: Props) => {
           </div>
 
           {/* CTA */}
-          <button onClick={onCTA} className="cta-button-large font-heading">
+          <button onClick={handleCTA} className="cta-button-large font-heading">
             Become A Goal-Hacker
           </button>
 
